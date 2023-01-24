@@ -21,8 +21,10 @@ public class Product {
     private int sku;
     private String name;
     private String description;
-    private int Quantity;
-    private String ImageUrl;
-    private double Price;
+    private int quantity;
+    private String imageUrl;
+    private double price;
+    //status
+
 
 }

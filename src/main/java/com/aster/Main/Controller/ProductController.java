@@ -26,11 +26,21 @@ public class ProductController {
         List<Product>productList= productService.addProduct(product);
         return new ResponseEntity<List<Product>>(productList, HttpStatus.OK);
     }
+    //return the one product
     @DeleteMapping("/removeProduct/{id}")
     public ResponseEntity<List<Product>> DeleteProduct(@PathVariable int id){
         List<Product>productList= productService.deleteProduct(id);
         return new ResponseEntity<List<Product>>(productList, HttpStatus.OK);
     }
+    @GetMapping("/getProduct/{id}")
+    public ResponseEntity<?> getProduct(@PathVariable int id){
+        Product product=productService.getProduct(id);
+        return new ResponseEntity<Product>(product,HttpStatus.OK);
+    }
+
+    //Update product
+
+
 
 
 

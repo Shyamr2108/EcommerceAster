@@ -1,0 +1,20 @@
+product:
+    "sku":
+    "name":
+    "description":
+    "quantity":
+    "imageUrl":
+    "price":
+user:
+    "uid":
+    "firstName":
+    "lastName":
+    "email":
+    "password":
+    "status":
+
+ Toadd cart
+        "sku":
+       "quantity":
+       "id":
+

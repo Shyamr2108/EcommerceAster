@@ -19,8 +19,6 @@ public class CartController {
     UserService userService;
     @Autowired
     CartService cartService;
-    @Autowired
-    ProductService productService;
 
     @GetMapping("/cart/{id}")
     public ResponseEntity<?> getCart(@PathVariable int id){
@@ -33,7 +31,7 @@ public class CartController {
     }
     @PostMapping("/addProduct")
     public ResponseEntity<?> createProductForUser(@RequestBody ToAddCart toAddCart){
-        Cart cart = cartService.addItemToCart(productService.getProduct(toAddCart.getSku()),toAddCart.getQuantity(),userService.getOne(toAddCart.getId()));
+        Cart cart = cartService.addItemToCart(toAddCart.getSku(),toAddCart.getQuantity(),toAddCart.getId());
         return new ResponseEntity<Cart>(cart, HttpStatus.OK);
     }
 

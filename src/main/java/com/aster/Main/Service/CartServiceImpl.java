@@ -6,6 +6,8 @@ import com.aster.Main.Entity.Product;
 import com.aster.Main.Entity.User;
 import com.aster.Main.Repository.CartEntryRepository;
 import com.aster.Main.Repository.CartRepository;
+import com.aster.Main.Repository.ProductRepository;
+import com.aster.Main.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +19,16 @@ public class CartServiceImpl implements CartService{
     private CartRepository cartRepository;
     @Autowired
     private CartEntryRepository cartEntryRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    ProductRepository productRepository;
 
 
     @Override
-    public Cart addItemToCart(Product product, int quantity, User user) {
+    public Cart addItemToCart(int sku, int quantity, int id) {
+        User user=userRepository.findById(id).get();
+        Product product=productRepository.findById(sku).get();
         Cart cart=user.getCart();
         if(cart==null){
             cart=new Cart();
@@ -84,6 +92,7 @@ public class CartServiceImpl implements CartService{
 
         return cartRepository.save(cart);
     }
+    // {user:products:[ product1, product2 ]}
 
     @Override
     public Cart deleteItemFromCart(Product product,User user) {
