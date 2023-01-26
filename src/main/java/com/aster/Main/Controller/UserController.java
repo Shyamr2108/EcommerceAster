@@ -3,22 +3,14 @@ package com.aster.Main.Controller;
 import com.aster.Main.DTO.AuthenticationRequest;
 import com.aster.Main.DTO.AuthenticationResponse;
 import com.aster.Main.DTO.RegisterUser;
-import com.aster.Main.Entity.Cart;
-import com.aster.Main.Entity.User;
-import com.aster.Main.Login;
-import com.aster.Main.Service.UserServiceImpl;
-import jakarta.validation.Valid;
+import com.aster.Main.Service.IMPL.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.beans.Encoder;
-import java.util.List;
 
 
 @RestController

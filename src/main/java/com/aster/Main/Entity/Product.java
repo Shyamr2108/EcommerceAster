@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class Product {
 
     @Id
@@ -24,7 +26,7 @@ public class Product {
     private int quantity;
     private String imageUrl;
     private double price;
-    //status
+    private boolean status;
 
 
 }

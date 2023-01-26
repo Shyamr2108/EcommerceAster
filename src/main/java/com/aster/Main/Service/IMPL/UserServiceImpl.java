@@ -1,4 +1,4 @@
-package com.aster.Main.Service;
+package com.aster.Main.Service.IMPL;
 
 import com.aster.Main.Config.JwtService;
 import com.aster.Main.DTO.AuthenticationRequest;
@@ -9,6 +9,7 @@ import com.aster.Main.Entity.Role;
 import com.aster.Main.Entity.User;
 import com.aster.Main.Repository.CartRepository;
 import com.aster.Main.Repository.UserRepository;
+import com.aster.Main.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

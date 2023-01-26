@@ -1,4 +1,4 @@
-package com.aster.Main.Service;
+package com.aster.Main.Service.IMPL;
 
 import com.aster.Main.Entity.Cart;
 import com.aster.Main.Entity.CartEntry;
@@ -8,13 +8,14 @@ import com.aster.Main.Repository.CartEntryRepository;
 import com.aster.Main.Repository.CartRepository;
 import com.aster.Main.Repository.ProductRepository;
 import com.aster.Main.Repository.UserRepository;
+import com.aster.Main.Service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 @Service
-public class CartServiceImpl implements CartService{
+public class CartServiceImpl implements CartService {
     @Autowired
     private CartRepository cartRepository;
     @Autowired

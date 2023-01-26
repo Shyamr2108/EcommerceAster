@@ -11,5 +11,6 @@ public interface ProductService {
     public List<Product> addProduct(Product product);
     public List<Product> deleteProduct(int sku);
     public Product getProduct(int sku);
+    public Product updateProduct(int sku, int quantity, String imageUrl, double price,boolean status);
     public List<Product> listProduct();
 }

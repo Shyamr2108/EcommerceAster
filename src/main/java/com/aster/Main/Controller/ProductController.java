@@ -1,5 +1,6 @@
 package com.aster.Main.Controller;
 
+import com.aster.Main.DTO.ProductDto;
 import com.aster.Main.Entity.Cart;
 import com.aster.Main.Entity.CartEntry;
 import com.aster.Main.Entity.Product;
@@ -15,30 +16,40 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("api/product")
 public class ProductController {
 
     @Autowired
     ProductService productService;
 
-    @PostMapping("/addProduct")
-    public ResponseEntity<List<Product>> createProduct(@RequestBody Product product){
-        List<Product>productList= productService.addProduct(product);
-        return new ResponseEntity<List<Product>>(productList, HttpStatus.OK);
+    @PostMapping("/add")
+    public ResponseEntity<Product> createProduct(@RequestBody Product product){
+         productService.addProduct(product);
+         Product product1=productService.getProduct(product.getSku());
+        return new ResponseEntity<Product>(product1, HttpStatus.OK);
     }
     //return the one product
-    @DeleteMapping("/removeProduct/{id}")
+    @DeleteMapping("/remove/{id}")
     public ResponseEntity<List<Product>> DeleteProduct(@PathVariable int id){
         List<Product>productList= productService.deleteProduct(id);
         return new ResponseEntity<List<Product>>(productList, HttpStatus.OK);
     }
-    @GetMapping("/getProduct/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<?> getProduct(@PathVariable int id){
         Product product=productService.getProduct(id);
         return new ResponseEntity<Product>(product,HttpStatus.OK);
     }
+    @PostMapping("/update")
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDto productDto){
+       Product product= productService.updateProduct(productDto.getId(),
+               productDto.getQuantity(),
+               productDto.getImageUrl(),
+               productDto.getPrice(),
+               productDto.getStatus());
 
-    //Update product
+        return new ResponseEntity<Product>(product,HttpStatus.OK);
+
+    }
 
 
 

@@ -30,7 +30,9 @@ public class User implements UserDetails {
    private String firstName;
    private String lastName;
    @Email
+   @Column(unique = true)
    private String email;
+    @Column(unique = true)
    @Size(max = 10 , min = 10)
    private String mobile;
   // @Pattern(regexp = "^(?=.*[0-9])" + "(?=.*[a-z])(?=.*[A-Z])" + "(?=.*[@#$%^&+=])" + "(?=\\S+$).{8,20}$", message ="worng password pattern" )
