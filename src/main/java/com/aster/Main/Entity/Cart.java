@@ -3,7 +3,6 @@ package com.aster.Main.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
 
 import java.util.Set;
 
@@ -12,14 +11,14 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cid;
+    private int cartId;
 
-    private double GrandTotal;
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "uid", referencedColumnName = "uid")
+    private double grandTotal;
+    @OneToOne(mappedBy = "cart")
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")

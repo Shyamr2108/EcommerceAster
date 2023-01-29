@@ -4,13 +4,12 @@ import com.aster.Main.Config.JwtService;
 import com.aster.Main.DTO.AuthenticationRequest;
 import com.aster.Main.DTO.AuthenticationResponse;
 import com.aster.Main.DTO.RegisterUser;
-import com.aster.Main.Entity.Cart;
 import com.aster.Main.Entity.Role;
 import com.aster.Main.Entity.User;
-import com.aster.Main.Repository.CartRepository;
 import com.aster.Main.Repository.UserRepository;
 import com.aster.Main.Service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,55 +20,48 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    CartRepository cartRepository;
 
-    @Override
-    public User getOne(int id) {
 
-        return userRepository.findById(id).get();
-    }
-
-    @Override
-    public List<User> registerUser(User user) {
-        userRepository.save(user);
-        return userRepository.findAll();
-    }
-
-    @Override
-    public User loginUser(String mobile, String password) {
-        User user=this.userRepository.findByMobileAndPassword(mobile,password);
-        if(user!=null) {
-            return user;
-        }
-        return null;
-    }
-
-    @Override
-    public Cart getCart(int userId) {
-        User user=this.userRepository.findById(userId).get();
-        if(user!=null) {
-            return this.cartRepository.findByUser(user);
-        }
-        return null;
-    }
-
-    @Override
-    public boolean DeactivateUser(int id) {
-        User user=this.userRepository.findById(id).get();
-        user.setStatus(false);
-        userRepository.delete(user);
-        return false;
-    }
+//    @Override
+//    public User getOne(int id) {
+//
+//        return userRepository.findById(id).get();
+//    }
+//
+//    @Override
+//    public List<User> registerUser(User user) {
+//        userRepository.save(user);
+//        return userRepository.findAll();
+//    }
+//
+//    @Override
+//    public User loginUser(String mobile, String password) {
+//        User user=this.userRepository.findByMobileAndPassword(mobile,password);
+//        if(user!=null) {
+//            return user;
+//        }
+//        return null;
+//    }
+//
+//
+//    @Override
+//    public boolean DeactivateUser(int id) {
+//        User user=this.userRepository.findById(id).get();
+//        user.setStatus(false);
+//        userRepository.delete(user);
+//        return false;
+//    }
 
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterUser request) {
+        log.info("new user is registered{}",request.getFirstname());
         var user = User.builder()
                 .firstName(request.getFirstname())
                 .lastName(request.getLastname())

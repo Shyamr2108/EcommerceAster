@@ -1,14 +1,10 @@
 package com.aster.Main.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -25,7 +21,7 @@ public class CartEntry {
     private double totalPrice;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cid", referencedColumnName = "cid")
+    @JoinColumn(name = "cartId", referencedColumnName = "cartId")
     private Cart cart;
 
     @OneToOne(fetch = FetchType.EAGER)

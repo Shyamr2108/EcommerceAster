@@ -3,6 +3,7 @@ package com.aster.Main.Service.IMPL;
 import com.aster.Main.Entity.Product;
 import com.aster.Main.Repository.ProductRepository;
 import com.aster.Main.Service.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,20 +11,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductRepository productRepository;
     @Override
     public List<Product> addProduct(Product product) {
-
+        log.info("new product is added to db{}",product.getName());
         productRepository.save(product);
         return productRepository.findAll();
     }
 
     @Override
     public List<Product> deleteProduct(int sku) {
-
+        log.info("product is deleted with sku",sku);
         productRepository.deleteById(sku);
         return productRepository.findAll();
     }
@@ -35,6 +37,7 @@ public class ProductServiceImpl implements ProductService {
         if(optProduct.isPresent()) {
             return optProduct.get();
         }else {
+
             return null;
         }
 //        return productRepository.getById(sku);

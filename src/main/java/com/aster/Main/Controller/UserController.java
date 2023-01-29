@@ -43,9 +43,7 @@ public class UserController {
 //        return new BCryptPasswordEncoder();
 //    }
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterUser request
-    ) {
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterUser request) {
         return ResponseEntity.ok(userServiceImpl.register(request));
     }
     @PostMapping("/authenticate")

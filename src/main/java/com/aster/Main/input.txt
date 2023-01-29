@@ -6,12 +6,12 @@ product:
     "imageUrl":,
     "price":
 user:
-    "uid":
-    "firstName":
-    "lastName":
-    "email":
-    "password":
-    "status":
+    "uid":,
+    "firstName":,
+    "lastName":,
+    "email":,
+    "password":,
+    "status":,
 
  Toadd cart
         "sku":

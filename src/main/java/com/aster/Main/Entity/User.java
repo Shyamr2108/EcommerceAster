@@ -41,7 +41,8 @@ public class User implements UserDetails {
    @Enumerated(EnumType.STRING)
    private Role role;
 
-   @OneToOne(mappedBy = "user")
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cartId", referencedColumnName = "cartId")
     private Cart cart;
 
     @Override
